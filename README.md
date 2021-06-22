@@ -1,1 +1,8 @@
 # GeoDifferentialPrivacy
+
+This is a repository for investigating differential privacy mechanisms in transportation area. We implemented two privacy mechanisms for the sporadic case and an algorithm for the repeated case as described in the paper **[Geo-indistinguishability: A Principled Approach to Location Privacy](https://hal.inria.fr/hal-01114241/document)**.
+We demonstrated the mechanisms using NYC taxi trip data for sporadic case and Porto taxi trajectory data for repeated case. 
+## NYC Taxi Trips
+For obfuscating single locations, we use the geo-indistinguishable mechanism of optimal utility proposed by the paper above with the aid of [greedy graph spanner algorithm](https://link.springer.com/article/10.1007%2FBF02189308) as a way to reduce the complexity. The code can be found in *[Greedy_Graph_Spanner.ipynb](https://github.com/quao627/GeoDifferentialPrivacy/blob/main/NewYorkTaxi/Greedy_Graph_Spanner.ipynb)*.
+## Porto Taxi Trajectories
+For obfuscating a whole trajectory, we implemented the predictive dX-private mechanism proposed by the paper. It's worth noting that in practice the prediction model can be chosen arbitrarily. In our demonstration, we built a simple trajetcory prediction model by combing two stacked LSTM layers together as detailed *pkdd-15-predict-taxi-service-trajectory-i/Trajectory_Prediction.ipynb.* The full code can be found in *[Trajectory_Privacy.ipynb](https://github.com/quao627/GeoDifferentialPrivacy/blob/main/pkdd-15-predict-taxi-service-trajectory-i/Trajectory_Privacy.ipynb)*. (please download the data from [Kaggle](https://www.kaggle.com/c/pkdd-15-predict-taxi-service-trajectory-i) if you are interested in running the code).
